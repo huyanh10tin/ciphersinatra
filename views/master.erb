@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mastermind game</title>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+	<script src="code.js" type="text/javascript">
+</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Master Mind Game</h1><p>Status <%= status %></p>
+	<h3>Instruction</h3>
+	<p>+ is right position and color,- is right colors,wrong position</p>
+	<hr>
+	<p>Code is <%= @message %></p>
+	<p class="element">You turb left is <%= @@turn %></p>
+	<% if !@@win %>
+	<form method="POST" action='/master'>
+		<input list="moneys" name="pos1" size="4">
+		<input list="moneys" name="pos2" size="4">
+		<input list="moneys" name="pos3" size="4">
+		<input list="moneys" name="pos4" size="4">
+		<datalist id="moneys">
+		  <option value="red">
+		  <option value="orange">
+		  <option value="yellow">
+		  <option value="green">
+		  <option value="blue">
+		  <option value="white">
+		</datalist>
+		<input id="check" type="submit" value="Check" disabled>
+	</form>
+	<% end %>
+	<form method="get" action='/reset'>
+		<input type="submit" value="new">
+	</form>
+	<div class="body">
+	<p>Size of result <%= @@result.size unless @result.nil? %></p>
+	<ul style="list-style-type: none" class="modify">
+	<% unless @@result.nil? %>
+		<% @@result.each_with_index do |element, index| %>
+			<li><% element.each do |small| %>
+					<%= small %>
+				<% end %>
+				<span class="test"><%= @@ketqua[index]%></span>
+			</li>	
+		<% end %>
+	<% end %>
+	</ul>
+	<span class="element"><%= message unless message.nil? %></span>
+	</div>
+</body>
+</html>

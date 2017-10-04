@@ -1,0 +1,16 @@
+.element{
+	font-weight: 100px;
+	font-family: sans-serif;
+	font-size: 40px;
+	color: red;
+}
+.modify{
+	padding: 3px;
+	border: 2px solid green;
+	width: 400px;
+	margin-left: 0px;
+}
+.test{
+	color: black;
+	background-color: red;
+}
